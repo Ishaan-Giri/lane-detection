@@ -1,0 +1,827 @@
+{
+  "dataset": "/kaggle/input/datasets/manideep1108/tusimple/TUSimple/test_set",
+  "label_files": [
+    "/kaggle/input/datasets/manideep1108/tusimple/TUSimple/test_label.json"
+  ],
+  "settings": {
+    "frames": 2782,
+    "context_frames": 19,
+    "ego_only": true,
+    "pixel_thresh": 20.0,
+    "ratio": 0.85
+  },
+  "results": [
+    {
+      "variant": "hough",
+      "accuracy": 0.7652998087523906,
+      "fp_rate": 0.44436376837901614,
+      "fn_rate": 0.4491632175634335,
+      "fps": 108.73410810877682,
+      "frames_scored": 2782,
+      "frames_processed": 2782
+    },
+    {
+      "variant": "sliding",
+      "accuracy": 0.8261093164906868,
+      "fp_rate": 0.26087779038970865,
+      "fn_rate": 0.2969228000719813,
+      "fps": 23.282093730545206,
+      "frames_scored": 2782,
+      "frames_processed": 2782
+    },
+    {
+      "variant": "smoothed",
+      "accuracy": 0.8276682255757517,
+      "fp_rate": 0.2548122736801982,
+      "fn_rate": 0.2963829404354868,
+      "fps": 24.300260234896655,
+      "frames_scored": 2782,
+      "frames_processed": 55640
+    }
+  ],
+  "config": {
+    "camera": {
+      "matrix": null,
+      "dist": null
+    },
+    "preprocess": {
+      "s_thresh": [
+        100,
+        255
+      ],
+      "s_min_lightness": 70,
+      "l_thresh": [
+        200,
+        255
+      ],
+      "sobel_thresh": [
+        40,
+        255
+      ],
+      "sobel_kernel": 3,
+      "morph_close": 3,
+      "morph_open": 0
+    },
+    "roi": {
+      "vertices": [
+        [
+          0.0,
+          1.0
+        ],
+        [
+          0.3958,
+          0.42
+        ],
+        [
+          0.6248,
+          0.42
+        ],
+        [
+          1.0,
+          1.0
+        ]
+      ]
+    },
+    "perspective": {
+      "src": [
+        [
+          0.4358,
+          0.45
+        ],
+        [
+          0.5848,
+          0.45
+        ],
+        [
+          0.9524,
+          1.0
+        ],
+        [
+          0.1191,
+          1.0
+        ]
+      ],
+      "dst": [
+        [
+          0.25,
+          0.0
+        ],
+        [
+          0.75,
+          0.0
+        ],
+        [
+          0.75,
+          1.0
+        ],
+        [
+          0.25,
+          1.0
+        ]
+      ],
+      "extend_to": 0.3338
+    },
+    "window": {
+      "n_windows": 9,
+      "margin": 100,
+      "min_pix": 50,
+      "search_margin": 80,
+      "min_fit_pixels": 150
+    },
+    "geometry": {
+      "lane_width_m": 3.7,
+      "view_length_m": 30.0
+    },
+    "tracker": {
+      "enabled": true,
+      "n_history": 5,
+      "method": "mean",
+      "ema_alpha": 0.3,
+      "min_lane_width_m": 2.8,
+      "max_lane_width_m": 4.8,
+      "max_width_std_m": 0.5,
+      "max_jump_m": 1.0,
+      "max_failures": 5
+    },
+    "hough": {
+      "blur_kernel": 5,
+      "canny": [
+        50,
+        150
+      ],
+      "rho": 2.0,
+      "theta_deg": 1.0,
+      "threshold": 30,
+      "min_line_length": 20,
+      "max_line_gap": 100,
+      "min_abs_slope": 0.4
+    },
+    "overlay": {
+      "fill_color": [
+        0,
+        200,
+        0
+      ],
+      "line_color": [
+        0,
+        0,
+        255
+      ],
+      "alpha": 0.35,
+      "show_text": true
+    }
+  },
+  "tuning": {
+    "dev_frames": 400,
+    "seed": 0,
+    "calibration_frames": 3611,
+    "extend_to": 0.3338,
+    "train_label_files": [
+      "label_data_0313.json",
+      "label_data_0531.json",
+      "label_data_0601.json"
+    ],
+    "chosen": {
+      "horizon": 0.45,
+      "preset": "default"
+    },
+    "presets": {
+      "default": {},
+      "strict": {
+        "l_thresh": [
+          220,
+          255
+        ],
+        "sobel_thresh": [
+          50,
+          255
+        ]
+      },
+      "loose": {
+        "l_thresh": [
+          180,
+          255
+        ],
+        "sobel_thresh": [
+          30,
+          255
+        ]
+      }
+    },
+    "candidates": [
+      {
+        "horizon": 0.42,
+        "preset": "default",
+        "src": [
+          [
+            0.453,
+            0.42
+          ],
+          [
+            0.5647,
+            0.42
+          ],
+          [
+            0.9524,
+            1.0
+          ],
+          [
+            0.1191,
+            1.0
+          ]
+        ],
+        "roi": [
+          [
+            0.0,
+            1.0
+          ],
+          [
+            0.413,
+            0.39
+          ],
+          [
+            0.6047,
+            0.39
+          ],
+          [
+            1.0,
+            1.0
+          ]
+        ],
+        "variant": "sliding",
+        "accuracy": 0.7170057603359723,
+        "fp_rate": 0.367911479944675,
+        "fn_rate": 0.42875,
+        "fps": 21.330137728317958,
+        "frames_scored": 400,
+        "frames_processed": 400
+      },
+      {
+        "horizon": 0.42,
+        "preset": "strict",
+        "src": [
+          [
+            0.453,
+            0.42
+          ],
+          [
+            0.5647,
+            0.42
+          ],
+          [
+            0.9524,
+            1.0
+          ],
+          [
+            0.1191,
+            1.0
+          ]
+        ],
+        "roi": [
+          [
+            0.0,
+            1.0
+          ],
+          [
+            0.413,
+            0.39
+          ],
+          [
+            0.6047,
+            0.39
+          ],
+          [
+            1.0,
+            1.0
+          ]
+        ],
+        "variant": "sliding",
+        "accuracy": 0.6542379614653386,
+        "fp_rate": 0.3476923076923077,
+        "fn_rate": 0.47,
+        "fps": 22.09045635390523,
+        "frames_scored": 400,
+        "frames_processed": 400
+      },
+      {
+        "horizon": 0.42,
+        "preset": "loose",
+        "src": [
+          [
+            0.453,
+            0.42
+          ],
+          [
+            0.5647,
+            0.42
+          ],
+          [
+            0.9524,
+            1.0
+          ],
+          [
+            0.1191,
+            1.0
+          ]
+        ],
+        "roi": [
+          [
+            0.0,
+            1.0
+          ],
+          [
+            0.413,
+            0.39
+          ],
+          [
+            0.6047,
+            0.39
+          ],
+          [
+            1.0,
+            1.0
+          ]
+        ],
+        "variant": "sliding",
+        "accuracy": 0.7151329417439913,
+        "fp_rate": 0.4538361508452536,
+        "fn_rate": 0.475,
+        "fps": 20.918171708163893,
+        "frames_scored": 400,
+        "frames_processed": 400
+      },
+      {
+        "horizon": 0.45,
+        "preset": "default",
+        "src": [
+          [
+            0.4358,
+            0.45
+          ],
+          [
+            0.5848,
+            0.45
+          ],
+          [
+            0.9524,
+            1.0
+          ],
+          [
+            0.1191,
+            1.0
+          ]
+        ],
+        "roi": [
+          [
+            0.0,
+            1.0
+          ],
+          [
+            0.3958,
+            0.42
+          ],
+          [
+            0.6248,
+            0.42
+          ],
+          [
+            1.0,
+            1.0
+          ]
+        ],
+        "variant": "sliding",
+        "accuracy": 0.731619420561278,
+        "fp_rate": 0.35893854748603354,
+        "fn_rate": 0.42625,
+        "fps": 21.642999458069575,
+        "frames_scored": 400,
+        "frames_processed": 400
+      },
+      {
+        "horizon": 0.45,
+        "preset": "strict",
+        "src": [
+          [
+            0.4358,
+            0.45
+          ],
+          [
+            0.5848,
+            0.45
+          ],
+          [
+            0.9524,
+            1.0
+          ],
+          [
+            0.1191,
+            1.0
+          ]
+        ],
+        "roi": [
+          [
+            0.0,
+            1.0
+          ],
+          [
+            0.3958,
+            0.42
+          ],
+          [
+            0.6248,
+            0.42
+          ],
+          [
+            1.0,
+            1.0
+          ]
+        ],
+        "variant": "sliding",
+        "accuracy": 0.6785846031610908,
+        "fp_rate": 0.3276661514683153,
+        "fn_rate": 0.45625,
+        "fps": 21.967488288570394,
+        "frames_scored": 400,
+        "frames_processed": 400
+      },
+      {
+        "horizon": 0.45,
+        "preset": "loose",
+        "src": [
+          [
+            0.4358,
+            0.45
+          ],
+          [
+            0.5848,
+            0.45
+          ],
+          [
+            0.9524,
+            1.0
+          ],
+          [
+            0.1191,
+            1.0
+          ]
+        ],
+        "roi": [
+          [
+            0.0,
+            1.0
+          ],
+          [
+            0.3958,
+            0.42
+          ],
+          [
+            0.6248,
+            0.42
+          ],
+          [
+            1.0,
+            1.0
+          ]
+        ],
+        "variant": "sliding",
+        "accuracy": 0.7156437104508953,
+        "fp_rate": 0.4598155467720685,
+        "fn_rate": 0.4875,
+        "fps": 20.785528188242314,
+        "frames_scored": 400,
+        "frames_processed": 400
+      },
+      {
+        "horizon": 0.5,
+        "preset": "default",
+        "src": [
+          [
+            0.407,
+            0.5
+          ],
+          [
+            0.6182,
+            0.5
+          ],
+          [
+            0.9524,
+            1.0
+          ],
+          [
+            0.1191,
+            1.0
+          ]
+        ],
+        "roi": [
+          [
+            0.0,
+            1.0
+          ],
+          [
+            0.367,
+            0.47
+          ],
+          [
+            0.6582,
+            0.47
+          ],
+          [
+            1.0,
+            1.0
+          ]
+        ],
+        "variant": "sliding",
+        "accuracy": 0.7030163729746602,
+        "fp_rate": 0.39372325249643364,
+        "fn_rate": 0.46875,
+        "fps": 22.450956571528696,
+        "frames_scored": 400,
+        "frames_processed": 400
+      },
+      {
+        "horizon": 0.5,
+        "preset": "strict",
+        "src": [
+          [
+            0.407,
+            0.5
+          ],
+          [
+            0.6182,
+            0.5
+          ],
+          [
+            0.9524,
+            1.0
+          ],
+          [
+            0.1191,
+            1.0
+          ]
+        ],
+        "roi": [
+          [
+            0.0,
+            1.0
+          ],
+          [
+            0.367,
+            0.47
+          ],
+          [
+            0.6582,
+            0.47
+          ],
+          [
+            1.0,
+            1.0
+          ]
+        ],
+        "variant": "sliding",
+        "accuracy": 0.6494991629068415,
+        "fp_rate": 0.3724247226624406,
+        "fn_rate": 0.505,
+        "fps": 23.22942810663718,
+        "frames_scored": 400,
+        "frames_processed": 400
+      },
+      {
+        "horizon": 0.5,
+        "preset": "loose",
+        "src": [
+          [
+            0.407,
+            0.5
+          ],
+          [
+            0.6182,
+            0.5
+          ],
+          [
+            0.9524,
+            1.0
+          ],
+          [
+            0.1191,
+            1.0
+          ]
+        ],
+        "roi": [
+          [
+            0.0,
+            1.0
+          ],
+          [
+            0.367,
+            0.47
+          ],
+          [
+            0.6582,
+            0.47
+          ],
+          [
+            1.0,
+            1.0
+          ]
+        ],
+        "variant": "sliding",
+        "accuracy": 0.6811384466956102,
+        "fp_rate": 0.517426273458445,
+        "fn_rate": 0.55,
+        "fps": 22.349839578996686,
+        "frames_scored": 400,
+        "frames_processed": 400
+      },
+      {
+        "horizon": 0.55,
+        "preset": "default",
+        "src": [
+          [
+            0.3782,
+            0.55
+          ],
+          [
+            0.6516,
+            0.55
+          ],
+          [
+            0.9524,
+            1.0
+          ],
+          [
+            0.1191,
+            1.0
+          ]
+        ],
+        "roi": [
+          [
+            0.0,
+            1.0
+          ],
+          [
+            0.3382,
+            0.52
+          ],
+          [
+            0.6916,
+            0.52
+          ],
+          [
+            1.0,
+            1.0
+          ]
+        ],
+        "variant": "sliding",
+        "accuracy": 0.6329275559717374,
+        "fp_rate": 0.4878419452887538,
+        "fn_rate": 0.57875,
+        "fps": 23.59156563307689,
+        "frames_scored": 400,
+        "frames_processed": 400
+      },
+      {
+        "horizon": 0.55,
+        "preset": "strict",
+        "src": [
+          [
+            0.3782,
+            0.55
+          ],
+          [
+            0.6516,
+            0.55
+          ],
+          [
+            0.9524,
+            1.0
+          ],
+          [
+            0.1191,
+            1.0
+          ]
+        ],
+        "roi": [
+          [
+            0.0,
+            1.0
+          ],
+          [
+            0.3382,
+            0.52
+          ],
+          [
+            0.6916,
+            0.52
+          ],
+          [
+            1.0,
+            1.0
+          ]
+        ],
+        "variant": "sliding",
+        "accuracy": 0.5777077835475725,
+        "fp_rate": 0.4388111888111888,
+        "fn_rate": 0.59875,
+        "fps": 22.775193583761528,
+        "frames_scored": 400,
+        "frames_processed": 400
+      },
+      {
+        "horizon": 0.55,
+        "preset": "loose",
+        "src": [
+          [
+            0.3782,
+            0.55
+          ],
+          [
+            0.6516,
+            0.55
+          ],
+          [
+            0.9524,
+            1.0
+          ],
+          [
+            0.1191,
+            1.0
+          ]
+        ],
+        "roi": [
+          [
+            0.0,
+            1.0
+          ],
+          [
+            0.3382,
+            0.52
+          ],
+          [
+            0.6916,
+            0.52
+          ],
+          [
+            1.0,
+            1.0
+          ]
+        ],
+        "variant": "sliding",
+        "accuracy": 0.617235606254079,
+        "fp_rate": 0.6005509641873278,
+        "fn_rate": 0.6375,
+        "fps": 22.034040124289255,
+        "frames_scored": 400,
+        "frames_processed": 400
+      }
+    ]
+  },
+  "untuned_default_sliding": {
+    "variant": "sliding",
+    "accuracy": 0.35596563971521783,
+    "fp_rate": 0.9994485800937414,
+    "fn_rate": 0.9996400935756703,
+    "fps": 28.519718000355827,
+    "frames_scored": 2782,
+    "frames_processed": 2782
+  },
+  "machine": {
+    "cpu": "Intel(R) Xeon(R) CPU @ 2.20GHz",
+    "cpus": 4,
+    "python": "3.13.15",
+    "opencv": "4.14.0",
+    "numpy": "2.1.3",
+    "where": "Kaggle notebook"
+  },
+  "examples": [
+    {
+      "file": "example_01.jpg",
+      "raw_file": "clips/0530/1492626328182638628_0/20.jpg",
+      "accuracy": 0.6129032258064516
+    },
+    {
+      "file": "example_02.jpg",
+      "raw_file": "clips/0530/1492638943713602995_0/20.jpg",
+      "accuracy": 0.5714285714285714
+    },
+    {
+      "file": "example_03.jpg",
+      "raw_file": "clips/0531/1492636579472464132/20.jpg",
+      "accuracy": 0.20253164556962025
+    },
+    {
+      "file": "example_04.jpg",
+      "raw_file": "clips/0531/1492638399175704698/20.jpg",
+      "accuracy": 0.9578947368421052
+    },
+    {
+      "file": "example_05.jpg",
+      "raw_file": "clips/0601/1494453579568653269/20.jpg",
+      "accuracy": 1.0
+    },
+    {
+      "file": "example_06.jpg",
+      "raw_file": "clips/0601/1494453893431485197/20.jpg",
+      "accuracy": 0.945054945054945
+    }
+  ]
+}

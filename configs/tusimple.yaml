@@ -1,0 +1,92 @@
+# Tuned for TuSimple (1280x720 US highways) by kaggle/tusimple_eval.py on TRAINING labels/frames only.
+# Perspective/ROI from the median ego-lane lines of all 3,626 training labels; horizon row and
+# threshold preset chosen on 400 random training frames. Results: docs/results.md.
+
+camera:
+  matrix: null
+  dist: null
+preprocess:
+  s_thresh:
+  - 100
+  - 255
+  s_min_lightness: 70
+  l_thresh:
+  - 200
+  - 255
+  sobel_thresh:
+  - 40
+  - 255
+  sobel_kernel: 3
+  morph_close: 3
+  morph_open: 0
+roi:
+  vertices:
+  - - 0.0
+    - 1.0
+  - - 0.3958
+    - 0.42
+  - - 0.6248
+    - 0.42
+  - - 1.0
+    - 1.0
+perspective:
+  src:
+  - - 0.4358
+    - 0.45
+  - - 0.5848
+    - 0.45
+  - - 0.9524
+    - 1.0
+  - - 0.1191
+    - 1.0
+  dst:
+  - - 0.25
+    - 0.0
+  - - 0.75
+    - 0.0
+  - - 0.75
+    - 1.0
+  - - 0.25
+    - 1.0
+  extend_to: 0.3338
+window:
+  n_windows: 9
+  margin: 100
+  min_pix: 50
+  search_margin: 80
+  min_fit_pixels: 150
+geometry:
+  lane_width_m: 3.7
+  view_length_m: 30.0
+tracker:
+  enabled: true
+  n_history: 5
+  method: mean
+  ema_alpha: 0.3
+  min_lane_width_m: 2.8
+  max_lane_width_m: 4.8
+  max_width_std_m: 0.5
+  max_jump_m: 1.0
+  max_failures: 5
+hough:
+  blur_kernel: 5
+  canny:
+  - 50
+  - 150
+  rho: 2.0
+  theta_deg: 1.0
+  threshold: 30
+  min_line_length: 20
+  max_line_gap: 100
+  min_abs_slope: 0.4
+overlay:
+  fill_color:
+  - 0
+  - 200
+  - 0
+  line_color:
+  - 0
+  - 0
+  - 255
+  alpha: 0.35
+  show_text: true
