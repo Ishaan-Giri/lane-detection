@@ -1,0 +1,44 @@
+{
+  "dataset": "synthetic (clips=50, seed=0)",
+  "label_files": [],
+  "settings": {
+    "frames": 50,
+    "context_frames": 19,
+    "ego_only": true,
+    "pixel_thresh": 20.0,
+    "ratio": 0.85
+  },
+  "results": [
+    {
+      "variant": "hough",
+      "accuracy": 0.9822916666666667,
+      "fp_rate": 0.05555555555555555,
+      "fn_rate": 0.05555555555555555,
+      "fps": 405.95510119689663,
+      "frames_scored": 50,
+      "frames_processed": 50
+    },
+    {
+      "variant": "sliding",
+      "accuracy": 1.0,
+      "fp_rate": 0.0,
+      "fn_rate": 0.0,
+      "fps": 55.32406338329666,
+      "frames_scored": 50,
+      "frames_processed": 50
+    },
+    {
+      "variant": "smoothed",
+      "accuracy": 0.9989583333333333,
+      "fp_rate": 0.1,
+      "fn_rate": 0.0,
+      "fps": 58.0742120396892,
+      "frames_scored": 50,
+      "frames_processed": 1000
+    }
+  ],
+  "machine": {
+    "cpu": "AMD Ryzen 5 5600H with Radeon Graphics",
+    "python": "3.12.3"
+  }
+}
