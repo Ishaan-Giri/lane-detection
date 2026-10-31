@@ -1,0 +1,22 @@
+__pycache__/
+*.py[cod]
+*.egg-info/
+.venv/
+venv/
+build/
+dist/
+.pytest_cache/
+.ruff_cache/
+.coverage
+coverage.xml
+htmlcov/
+.ipynb_checkpoints/
+
+# datasets and run outputs
+data/
+results/failures/
+*.mp4
+!docs/demo.mp4
+
+# personal planning notes (job-application context), keep out of the public repo
+lane_detection_plan.md

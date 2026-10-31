@@ -1,0 +1,63 @@
+# lanedet default configuration.
+# Points are fractions of image (width, height); window sizes are warped-image pixels tuned for 1280x720.
+# The ROI and perspective points are starting values. Re-tune them per camera on a development set
+# (see docs/design.md, "Setting the perspective points").
+
+camera:            # optional lens calibration; leave null to skip undistortion
+  matrix: null     # 3x3 intrinsic matrix
+  dist: null       # [k1, k2, p1, p2, k3]
+
+preprocess:
+  s_thresh: [100, 255]      # HLS saturation band for yellow paint
+  s_min_lightness: 70       # ignore dark pixels whose saturation is just noise (shadows)
+  l_thresh: [200, 255]      # HLS lightness band for white paint
+  sobel_thresh: [40, 255]   # |d/dx L| scaled by the kernel's max response, 0..255
+  sobel_kernel: 3
+  morph_close: 3            # 0 disables
+  morph_open: 0             # 0 disables
+
+roi:
+  vertices: [[0.05, 1.0], [0.40, 0.52], [0.60, 0.52], [0.95, 1.0]]
+
+perspective:               # order: top-left, top-right, bottom-right, bottom-left
+  src: [[0.425, 0.55], [0.575, 0.55], [0.80, 1.0], [0.20, 1.0]]
+  dst: [[0.25, 0.0], [0.75, 0.0], [0.75, 1.0], [0.25, 1.0]]
+  extend_to: null         # extend lane lines up to this image row (fraction); null = trapezoid top
+
+window:
+  n_windows: 9
+  margin: 100              # window half-width
+  min_pix: 50              # pixels needed to recentre the next window
+  search_margin: 80        # band half-width when searching around the previous fit
+  min_fit_pixels: 150      # fewer pixels -> no fit for that lane
+
+geometry:
+  lane_width_m: 3.7        # US highway lane
+  view_length_m: 30.0      # road length shown by the warped image height
+
+tracker:
+  enabled: true
+  n_history: 5
+  method: mean             # mean | ema
+  ema_alpha: 0.3
+  min_lane_width_m: 2.8
+  max_lane_width_m: 4.8
+  max_width_std_m: 0.5     # parallelism check
+  max_jump_m: 1.0          # max per-frame lateral change vs the smoothed fit
+  max_failures: 5          # consecutive rejections before a full re-search
+
+hough:
+  blur_kernel: 5
+  canny: [50, 150]
+  rho: 2.0
+  theta_deg: 1.0
+  threshold: 30
+  min_line_length: 20
+  max_line_gap: 100
+  min_abs_slope: 0.4
+
+overlay:
+  fill_color: [0, 200, 0]  # BGR
+  line_color: [0, 0, 255]
+  alpha: 0.35
+  show_text: true
